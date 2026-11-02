@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HealthSync · by Hassaan</title>
+<meta name="description" content="HealthSync is a hospital communication app for Android that connects patients, doctors, hospital staff and admins. Designed and developed by Hassaan.">
+<meta name="author" content="Hassaan">
+<meta property="og:title" content="HealthSync · by Hassaan">
+<meta property="og:description" content="One app for patients, doctors and hospital staff: secure chat and video calls, clinical task routing, AI MRI analysis and an AI health assistant.">
+<meta property="og:image" content="https://hassaan2077.github.io/HealthSync-Showcase/banner.png">
+<meta property="og:url" content="https://hassaan2077.github.io/HealthSync-Showcase/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #407BFF;
+    --blue-dark: #1E3FA8;
+    --navy: #0F1A3A;
+    --ink: #172036;
+    --muted: #5B6680;
+    --bg: #F6F8FD;
+    --card: #FFFFFF;
+    --line: #E3E9F7;
+    --radius: 22px;
+    --shadow: 0 18px 50px rgba(30, 63, 168, .12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Poppins', system-ui, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1180px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Nav ---------- */
+  nav { position: fixed; inset: 0 0 auto; z-index: 50; transition: background .3s, box-shadow .3s; }
+  nav.scrolled { background: rgba(255,255,255,.9); backdrop-filter: blur(12px); box-shadow: 0 2px 20px rgba(15,26,58,.08); }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: #fff; }
+  nav.scrolled .brand { color: var(--ink); }
+  .brand img { width: 36px; height: 36px; border-radius: 10px; }
+  .links { display: flex; gap: 28px; font-weight: 500; font-size: 15px; color: rgba(255,255,255,.88); }
+  nav.scrolled .links { color: var(--muted); }
+  .links a:hover { color: var(--blue); }
+  @media (max-width: 860px) { .links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; background: linear-gradient(140deg, #4C86FF 0%, #2F5FE3 45%, #1B3592 100%); color: #fff; padding: 140px 0 110px; overflow: hidden; }
+  .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.08); }
+  .hero::before { width: 720px; height: 720px; right: -220px; top: -260px; }
+  .hero::after { width: 520px; height: 520px; left: -240px; bottom: -280px; }
+  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); padding: 7px 16px; border-radius: 99px; font-size: 14px; font-weight: 500; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #5CF2B0; box-shadow: 0 0 0 4px rgba(92,242,176,.25); }
+  h1 { font-size: clamp(48px, 7vw, 92px); line-height: 1.02; font-weight: 800; letter-spacing: -2px; margin: 22px 0 18px; }
+  .lead { font-size: clamp(18px, 2vw, 22px); color: rgba(255,255,255,.88); max-width: 560px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 14px; font-weight: 600; font-size: 16px; transition: transform .2s, box-shadow .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-white { background: #fff; color: var(--blue-dark); box-shadow: 0 10px 30px rgba(10,20,60,.25); }
+  .btn-ghost { border: 1.5px solid rgba(255,255,255,.55); color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,.12); }
+  .dev { display: inline-flex; align-items: center; gap: 14px; margin-top: 38px; background: rgba(255,255,255,.96); color: var(--ink); padding: 12px 22px 12px 12px; border-radius: 18px; box-shadow: 0 14px 40px rgba(10,20,60,.25); }
+  .dev .av { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 22px; }
+  .dev small { display: block; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--blue); }
+  .dev strong { font-size: 22px; font-weight: 700; line-height: 1.2; }
+
+  .phones { position: relative; height: 600px; }
+  .phone { position: absolute; width: 270px; filter: drop-shadow(0 30px 40px rgba(5,15,50,.35)); transition: transform .5s ease; }
+  .phone.p1 { left: 50%; top: 0; transform: translateX(-50%); z-index: 3; width: 300px; animation: float 6s ease-in-out infinite; }
+  .phone.p2 { left: 0; top: 70px; transform: rotate(-8deg); z-index: 2; }
+  .phone.p3 { right: 0; top: 70px; transform: rotate(8deg); z-index: 1; }
+  @keyframes float { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-14px); } }
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .lead { margin-inline: auto; } .cta { justify-content: center; }
+    .phones { height: 460px; margin-top: 20px; }
+    .phone { width: 190px; } .phone.p1 { width: 220px; }
+  }
+  @media (max-width: 480px) { .phone.p2, .phone.p3 { display: none; } .phones { height: 430px; } .phone.p1 { width: 210px; } }
+
+  /* ---------- Stats strip ---------- */
+  .stats { margin-top: -54px; position: relative; z-index: 5; }
+  .stats-in { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 26px 20px; text-align: center; border-right: 1px solid var(--line); }
+  .stat:last-child { border-right: 0; }
+  .stat b { display: block; font-size: 36px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+  .stat span { color: var(--muted); font-size: 14px; font-weight: 500; }
+  @media (max-width: 700px) { .stats-in { grid-template-columns: repeat(2, 1fr); } .stat:nth-child(2) { border-right: 0; } .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); } }
+
+  /* ---------- Sections ---------- */
+  section { padding: 100px 0; }
+  .head { text-align: center; max-width: 700px; margin: 0 auto 56px; }
+  .tag { display: inline-block; color: var(--blue); background: #E8EFFF; font-weight: 600; font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 14px; border-radius: 99px; }
+  h2 { font-size: clamp(30px, 4vw, 44px); line-height: 1.15; font-weight: 700; margin: 16px 0 12px; letter-spacing: -.5px; }
+  .head p { color: var(--muted); font-size: 17px; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 900px) { .grid3 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .grid3 { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
+  .ic { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; font-size: 26px; margin-bottom: 18px; }
+  .card h3 { font-size: 19px; font-weight: 600; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 15px; }
+
+  /* ---------- Roles ---------- */
+  .roles { background: linear-gradient(180deg, #fff, var(--bg)); }
+  .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
+  .tab { border: 1.5px solid var(--line); background: #fff; color: var(--muted); font: 600 15px 'Poppins', sans-serif; padding: 11px 22px; border-radius: 99px; cursor: pointer; transition: all .2s; }
+  .tab.active, .tab:hover { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 8px 22px rgba(64,123,255,.3); }
+  .role { display: none; grid-template-columns: 1fr 1.25fr; gap: 50px; align-items: center; }
+  .role.active { display: grid; animation: fade .45s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  .role h3 { font-size: 30px; font-weight: 700; margin-bottom: 10px; }
+  .role > div > p { color: var(--muted); margin-bottom: 22px; }
+  .checks { list-style: none; display: grid; gap: 14px; }
+  .checks li { display: flex; gap: 12px; font-size: 15.5px; }
+  .checks li::before { content: "✓"; flex: none; width: 26px; height: 26px; border-radius: 8px; background: #E8EFFF; color: var(--blue); font-weight: 700; display: grid; place-items: center; font-size: 14px; margin-top: 1px; }
+  .shots { display: flex; gap: 16px; justify-content: center; }
+  .shots img { width: 33%; max-width: 230px; cursor: zoom-in; transition: transform .3s; filter: drop-shadow(0 16px 24px rgba(15,26,58,.16)); }
+  .shots img:hover { transform: translateY(-8px) scale(1.02); }
+  @media (max-width: 900px) { .role.active { grid-template-columns: 1fr; } .role h3 { text-align: center; } .role > div > p { text-align: center; } }
+
+  /* ---------- Gallery ---------- */
+  .gallery-wrap { position: relative; }
+  .gallery { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px 20px 30px; scrollbar-width: thin; }
+  .gallery figure { flex: 0 0 210px; scroll-snap-align: center; text-align: center; }
+  .gallery img { cursor: zoom-in; transition: transform .3s; filter: drop-shadow(0 14px 20px rgba(15,26,58,.15)); }
+  .gallery img:hover { transform: translateY(-6px); }
+  .gallery figcaption { font-size: 14px; font-weight: 500; color: var(--muted); margin-top: 6px; }
+  .arrows { display: flex; justify-content: center; gap: 12px; margin-top: 8px; }
+  .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--line); background: #fff; font-size: 20px; cursor: pointer; color: var(--blue); transition: all .2s; }
+  .arrow:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+  /* ---------- Security ---------- */
+  .dark { background: var(--navy); color: #fff; }
+  .dark .tag { background: rgba(64,123,255,.2); color: #8EB1FF; }
+  .dark .head p { color: #A9B6D8; }
+  .sec { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+  .sec div { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 24px; }
+  .sec b { display: block; font-size: 17px; margin: 10px 0 6px; }
+  .sec p { color: #A9B6D8; font-size: 14.5px; }
+  .sec span { font-size: 28px; }
+
+  /* ---------- Architecture ---------- */
+  .arch { display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; }
+  .node { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; display: flex; gap: 14px; align-items: center; box-shadow: 0 6px 20px rgba(15,26,58,.05); }
+  .node .ic { margin: 0; width: 46px; height: 46px; font-size: 22px; border-radius: 14px; }
+  .node b { display: block; font-size: 15.5px; } .node small { color: var(--muted); font-size: 13px; }
+  .center { text-align: center; }
+  .center .node { flex-direction: column; text-align: center; padding: 30px; border: 2px solid var(--blue); box-shadow: 0 16px 40px rgba(64,123,255,.18); }
+  .stack { display: grid; gap: 14px; }
+  .link { height: 2px; background: repeating-linear-gradient(90deg, var(--blue) 0 8px, transparent 8px 14px); }
+  @media (max-width: 900px) { .arch { grid-template-columns: 1fr; } }
+
+  /* ---------- Tech ---------- */
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .chip { background: #fff; border: 1px solid var(--line); padding: 11px 20px; border-radius: 14px; font-weight: 500; font-size: 15px; display: inline-flex; gap: 8px; align-items: center; transition: transform .2s; }
+  .chip:hover { transform: translateY(-3px); border-color: var(--blue); }
+
+  /* ---------- Author ---------- */
+  .author { background: linear-gradient(140deg, #4C86FF, #1B3592); color: #fff; border-radius: 32px; padding: 60px; display: grid; grid-template-columns: auto 1fr auto; gap: 34px; align-items: center; position: relative; overflow: hidden; }
+  .author::after { content: ""; position: absolute; width: 380px; height: 380px; border-radius: 50%; background: rgba(255,255,255,.08); right: -120px; top: -160px; }
+  .author .big { width: 110px; height: 110px; border-radius: 30px; background: #fff; color: var(--blue); font-size: 50px; font-weight: 800; display: grid; place-items: center; box-shadow: 0 16px 40px rgba(5,15,50,.3); }
+  .author small { letter-spacing: 2px; font-weight: 600; color: #BFD2FF; }
+  .author h2 { margin: 4px 0 8px; color: #fff; }
+  .author p { color: rgba(255,255,255,.85); max-width: 560px; }
+  @media (max-width: 860px) { .author { grid-template-columns: 1fr; text-align: center; padding: 44px 26px; } .author .big { margin-inline: auto; } .author p { margin-inline: auto; } }
+
+  footer { text-align: center; padding: 40px 0 50px; color: var(--muted); font-size: 14px; }
+  footer b { color: var(--ink); }
+
+  /* ---------- Lightbox ---------- */
+  .lb { position: fixed; inset: 0; background: rgba(8,14,34,.88); display: none; align-items: center; justify-content: center; z-index: 100; padding: 24px; cursor: zoom-out; }
+  .lb.open { display: flex; animation: fade .25s; }
+  .lb img { max-height: 92vh; width: auto; }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .phone.p1 { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand"><img src="icon.png" alt="">HealthSync</a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#roles">Roles</a>
+      <a href="#screens">Screens</a>
+      <a href="#security">Security</a>
+      <a href="#developer">Developer</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Android app · React Native + Firebase</span>
+      <h1>HealthSync</h1>
+      <p class="lead">One app that connects patients, doctors, hospital staff and admins: secure chat and video calls, clinical tasks, health notes and AI that reads brain MRI scans.</p>
+      <div class="cta">
+        <a class="btn btn-white" href="#screens">See the app →</a>
+        <a class="btn btn-ghost" href="https://github.com/hassaan2077/HealthSync-Showcase" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <a class="dev" href="#developer">
+        <span class="av">H</span>
+        <span><small>DESIGNED &amp; DEVELOPED BY</small><strong>Hassaan</strong></span>
+      </a>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <img class="phone p2" src="screenshots/02-welcome.png" alt="">
+      <img class="phone p3" src="screenshots/08-create-task.png" alt="">
+      <img class="phone p1" src="screenshots/01-splash.png" alt="">
+    </div>
+  </div>
+</header>
+
+<div class="wrap stats">
+  <div class="stats-in reveal">
+    <div class="stat"><b>4</b><span>User roles</span></div>
+    <div class="stat"><b>10</b><span>Hospital staff roles</span></div>
+    <div class="stat"><b>15</b><span>Departments</span></div>
+    <div class="stat"><b>2</b><span>AI services</span></div>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="tag">Features</span>
+      <h2>Everything a hospital team needs, in one app</h2>
+      <p>Built for real hospital workflows, from a patient's first symptom note to the lab result.</p>
+    </div>
+    <div class="grid3">
+      <div class="card reveal"><div class="ic" style="background:#E8EFFF">💬</div><h3>Chat &amp; video calls</h3><p>Real-time messaging with voice notes, files, read receipts and one-tap video calls that ring even when the app is closed.</p></div>
+      <div class="card reveal"><div class="ic" style="background:#FFF1E2">📋</div><h3>Clinical task routing</h3><p>Doctors send tasks to a department or named staff. The first person to complete a task claims it, and the doctor is notified.</p></div>
+      <div class="card reveal"><div class="ic" style="background:#E5F8EF">📝</div><h3>Health notes</h3><p>Patients keep a health journal and share a single note with a doctor, who replies with comments right on the note.</p></div>
+      <div class="card reveal"><div class="ic" style="background:#F2E9FF">🧠</div><h3>AI brain MRI analysis</h3><p>Lab staff upload a scan and get a tumour classification, a Grad-CAM heatmap of what the model saw, and a PDF report.</p></div>
+      <div class="card reveal"><div class="ic" style="background:#E3F6FB">🤖</div><h3>AI health assistant</h3><p>Ask medical questions and get clear, structured answers: overview, key facts, when to see a doctor and treatment options.</p></div>
+      <div class="card reveal"><div class="ic" style="background:#FDE8EC">🔔</div><h3>Smart notifications</h3><p>Push notifications arrive whether the app is open, in the background or closed, and open the right screen when tapped.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="roles" id="roles">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="tag">Built for every role</span>
+      <h2>Four dashboards, one app</h2>
+      <p>Each person sees exactly what they need. Pick a role to explore.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-role="patient">🧑 Patient</button>
+      <button class="tab" data-role="doctor">🩺 Doctor</button>
+      <button class="tab" data-role="staff">🏥 Hospital Staff</button>
+      <button class="tab" data-role="admin">🛡️ Admin</button>
+    </div>
+
+    <div class="role active" id="role-patient">
+      <div>
+        <h3>For patients</h3>
+        <p>Track your health and stay in touch with your doctors.</p>
+        <ul class="checks">
+          <li>Health journal, searchable by day or date</li>
+          <li>Share one note with a chosen doctor and read their comments</li>
+          <li>Chat, voice notes and video calls with doctors</li>
+          <li>AI health assistant for medical questions</li>
+          <li>Sign up with email or phone number (OTP) and fingerprint login</li>
+        </ul>
+      </div>
+      <div class="shots">
+        <img src="screenshots/05-patient-signup.png" alt="Patient sign-up">
+        <img src="screenshots/12-health-notes.png" alt="Health notes">
+        <img src="screenshots/11-chat-health-note.png" alt="Health note shared in chat">
+      </div>
+    </div>
+
+    <div class="role" id="role-doctor">
+      <div>
+        <h3>For doctors</h3>
+        <p>Coordinate care with patients and the hospital team.</p>
+        <ul class="checks">
+          <li>Create tasks for a patient with priority and notes</li>
+          <li>Route tasks to any of 15 departments or to named staff</li>
+          <li>Track incomplete and completed tasks live</li>
+          <li>Review notes patients share and reply in context</li>
+          <li>Messaging and video calls with patients and colleagues</li>
+        </ul>
+      </div>
+      <div class="shots">
+        <img src="screenshots/07-doctor-home.png" alt="Doctor dashboard">
+        <img src="screenshots/08-create-task.png" alt="Create a task">
+        <img src="screenshots/09-task-history.png" alt="Task history">
+      </div>
+    </div>
+
+    <div class="role" id="role-staff">
+      <div>
+        <h3>For hospital staff</h3>
+        <p>Nurses, medical officers, lab staff and more: 10 roles across 15 departments.</p>
+        <ul class="checks">
+          <li>Task inbox for your department and tasks assigned to you</li>
+          <li>Tap Complete to claim a task; the doctor is notified instantly</li>
+          <li>AI brain MRI analysis with heatmap and PDF report (lab staff)</li>
+          <li>Chat and voice notes with doctors</li>
+        </ul>
+      </div>
+      <div class="shots">
+        <img src="screenshots/06-staff-signup.png" alt="Staff sign-up">
+        <img src="screenshots/14-staff-tasks.png" alt="Staff task inbox">
+        <img src="screenshots/15-voice-note.png" alt="Voice notes">
+      </div>
+    </div>
+
+    <div class="role" id="role-admin">
+      <div>
+        <h3>For admins</h3>
+        <p>Oversee the whole team, safely.</p>
+        <ul class="checks">
+          <li>Directory of every doctor, staff member and patient</li>
+          <li>Search, filter by role and manage on-call status</li>
+          <li>Create new admins from inside the app</li>
+          <li>Nobody can sign themselves up as an admin</li>
+        </ul>
+      </div>
+      <div class="shots">
+        <img src="screenshots/17-admin-home.png" alt="Admin dashboard">
+        <img src="screenshots/18-new-admin.png" alt="Create a new admin">
+        <img src="screenshots/19-admin-directory.png" alt="Team directory">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screens">
+  <div class="head reveal wrap">
+    <span class="tag">Screens</span>
+    <h2>A closer look</h2>
+    <p>Real screens from the app on an Android phone. Tap any screen to enlarge. Personal details are blurred.</p>
+  </div>
+  <div class="gallery-wrap">
+    <div class="gallery" id="gallery">
+      <figure><img src="screenshots/01-splash.png" alt="Intro screen" loading="lazy"><figcaption>Intro screen</figcaption></figure>
+      <figure><img src="screenshots/02-welcome.png" alt="Welcome" loading="lazy"><figcaption>Welcome</figcaption></figure>
+      <figure><img src="screenshots/03-choose-role.png" alt="Choose your role" loading="lazy"><figcaption>Choose your role</figcaption></figure>
+      <figure><img src="screenshots/04-login.png" alt="Login" loading="lazy"><figcaption>Login</figcaption></figure>
+      <figure><img src="screenshots/05-patient-signup.png" alt="Patient sign-up" loading="lazy"><figcaption>Patient sign-up</figcaption></figure>
+      <figure><img src="screenshots/06-staff-signup.png" alt="Staff sign-up" loading="lazy"><figcaption>Staff sign-up</figcaption></figure>
+      <figure><img src="screenshots/07-doctor-home.png" alt="Doctor dashboard" loading="lazy"><figcaption>Doctor dashboard</figcaption></figure>
+      <figure><img src="screenshots/08-create-task.png" alt="Create a task" loading="lazy"><figcaption>Create a task</figcaption></figure>
+      <figure><img src="screenshots/09-task-history.png" alt="Task history" loading="lazy"><figcaption>Task history</figcaption></figure>
+      <figure><img src="screenshots/10-messages.png" alt="Conversations" loading="lazy"><figcaption>Conversations</figcaption></figure>
+      <figure><img src="screenshots/11-chat-health-note.png" alt="Shared health note" loading="lazy"><figcaption>Shared health note</figcaption></figure>
+      <figure><img src="screenshots/12-health-notes.png" alt="Health notes" loading="lazy"><figcaption>Health notes</figcaption></figure>
+      <figure><img src="screenshots/13-settings.png" alt="Settings" loading="lazy"><figcaption>Fingerprint &amp; settings</figcaption></figure>
+      <figure><img src="screenshots/14-staff-tasks.png" alt="Staff tasks" loading="lazy"><figcaption>Staff task inbox</figcaption></figure>
+      <figure><img src="screenshots/15-voice-note.png" alt="Voice notes" loading="lazy"><figcaption>Voice notes</figcaption></figure>
+      <figure><img src="screenshots/16-video-call.png" alt="Video call" loading="lazy"><figcaption>Video call</figcaption></figure>
+      <figure><img src="screenshots/17-admin-home.png" alt="Admin dashboard" loading="lazy"><figcaption>Admin dashboard</figcaption></figure>
+      <figure><img src="screenshots/18-new-admin.png" alt="Create admin" loading="lazy"><figcaption>Create a new admin</figcaption></figure>
+      <figure><img src="screenshots/19-admin-directory.png" alt="Directory" loading="lazy"><figcaption>Team directory</figcaption></figure>
+    </div>
+    <div class="arrows">
+      <button class="arrow" id="prev" aria-label="Previous screens">←</button>
+      <button class="arrow" id="next" aria-label="Next screens">→</button>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="security">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="tag">Security &amp; privacy</span>
+      <h2>Health data, handled with care</h2>
+      <p>Security was designed in from the start and reviewed throughout development.</p>
+    </div>
+    <div class="sec">
+      <div class="reveal"><span>🔒</span><b>Private by rule</b><p>Database rules let each person read only their own chats and health notes. Tasks are visible only to hospital staff.</p></div>
+      <div class="reveal"><span>🗝️</span><b>No keys in the app</b><p>Notifications go through a small serverless service that holds the secret key and checks the sender's login first.</p></div>
+      <div class="reveal"><span>🛡️</span><b>Protected roles</b><p>Nobody can make themselves an admin. Only an existing admin can create one, and the rules enforce it.</p></div>
+      <div class="reveal"><span>✉️</span><b>Verified accounts</b><p>Email accounts are verified before first login; phone accounts are verified by OTP.</p></div>
+      <div class="reveal"><span>👆</span><b>Secure on device</b><p>Sessions live in encrypted storage, and fingerprint login uses the Android keystore.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="tag">Architecture</span>
+      <h2>How it fits together</h2>
+      <p>A React Native app backed by Firebase, a serverless push service, and two Python AI services.</p>
+    </div>
+    <div class="arch reveal">
+      <div class="stack">
+        <div class="node"><div class="ic" style="background:#FFF6DB">🔥</div><div><b>Firebase</b><small>Auth, Realtime Database, Cloud Messaging</small></div></div>
+        <div class="node"><div class="ic" style="background:#FFEFE3">☁️</div><div><b>Push service</b><small>Cloudflare Worker</small></div></div>
+        <div class="node"><div class="ic" style="background:#E8EFFF">🎥</div><div><b>Video calls</b><small>ZEGOCLOUD</small></div></div>
+      </div>
+      <div class="center"><div class="node"><img src="icon.png" alt="" style="width:64px;height:64px;border-radius:18px"><div><b style="font-size:20px">HealthSync app</b><small>React Native · Android</small></div></div></div>
+      <div class="stack">
+        <div class="node"><div class="ic" style="background:#F2E9FF">🧠</div><div><b>MRI analysis service</b><small>Flask, PyTorch, Grad-CAM</small></div></div>
+        <div class="node"><div class="ic" style="background:#E3F6FB">🤖</div><div><b>AI assistant service</b><small>Flask, Hugging Face models</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="tag">Tech stack</span>
+      <h2>Built with</h2>
+    </div>
+    <div class="chips reveal">
+      <span class="chip">⚛️ React Native 0.76</span>
+      <span class="chip">🧭 React Navigation</span>
+      <span class="chip">🔥 Firebase Auth</span>
+      <span class="chip">🗄️ Realtime Database</span>
+      <span class="chip">🔔 Cloud Messaging</span>
+      <span class="chip">☁️ Cloudflare Workers</span>
+      <span class="chip">🎥 ZEGOCLOUD</span>
+      <span class="chip">🐍 Python &amp; Flask</span>
+      <span class="chip">🔦 PyTorch</span>
+      <span class="chip">🤗 Hugging Face</span>
+      <span class="chip">🎞️ Lottie &amp; Reanimated</span>
+      <span class="chip">👆 Android Keystore</span>
+    </div>
+  </div>
+</section>
+
+<section id="developer" style="padding-top:0">
+  <div class="wrap">
+    <div class="author reveal">
+      <div class="big">H</div>
+      <div>
+        <small>DESIGNED &amp; DEVELOPED BY</small>
+        <h2>Hassaan</h2>
+        <p>I built HealthSync end to end: the mobile app, the Firebase backend and security rules, the push service and the AI integrations. The source code is private. Reach out on GitHub to learn more.</p>
+      </div>
+      <a class="btn btn-white" href="https://github.com/hassaan2077" target="_blank" rel="noopener">GitHub @hassaan2077</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 <b>Hassaan</b>. HealthSync. All rights reserved.</footer>
+
+<div class="lb" id="lb"><img alt=""></div>
+
+<script>
+  // Nav background after scrolling
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Role tabs
+  document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === tab));
+    document.querySelectorAll('.role').forEach(r => r.classList.toggle('active', r.id === 'role-' + tab.dataset.role));
+  }));
+
+  // Gallery arrows
+  const gallery = document.getElementById('gallery');
+  document.getElementById('prev').onclick = () => gallery.scrollBy({ left: -700, behavior: 'smooth' });
+  document.getElementById('next').onclick = () => gallery.scrollBy({ left: 700, behavior: 'smooth' });
+
+  // Lightbox
+  const lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+  document.querySelectorAll('.gallery img, .shots img').forEach(img => img.addEventListener('click', () => {
+    lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open');
+  }));
+  lb.addEventListener('click', () => lb.classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

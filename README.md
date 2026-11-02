@@ -14,6 +14,8 @@ Designed and developed by **[Hassaan](https://github.com/hassaan2077)**
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
 
+### 🌐 [Visit the website →](https://hassaan2077.github.io/HealthSync-Showcase/)
+
 [Highlights](#highlights) · [Screenshots](#screenshots) · [Features](#features) · [Security](#security-and-privacy) · [Architecture](#architecture) · [Tech stack](#tech-stack)
 
 </div>
