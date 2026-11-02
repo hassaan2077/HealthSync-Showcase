@@ -53,7 +53,7 @@
   .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.08); }
   .hero::before { width: 720px; height: 720px; right: -220px; top: -260px; }
   .hero::after { width: 520px; height: 520px; left: -240px; bottom: -280px; }
-  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; align-items: center; }
   .eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); padding: 7px 16px; border-radius: 99px; font-size: 14px; font-weight: 500; }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: #5CF2B0; box-shadow: 0 0 0 4px rgba(92,242,176,.25); }
   h1 { font-size: clamp(48px, 7vw, 92px); line-height: 1.02; font-weight: 800; letter-spacing: -2px; margin: 22px 0 18px; }
@@ -113,7 +113,7 @@
   .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
   .tab { border: 1.5px solid var(--line); background: #fff; color: var(--muted); font: 600 15px 'Poppins', sans-serif; padding: 11px 22px; border-radius: 99px; cursor: pointer; transition: all .2s; }
   .tab.active, .tab:hover { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 8px 22px rgba(64,123,255,.3); }
-  .role { display: none; grid-template-columns: 1fr 1.25fr; gap: 50px; align-items: center; }
+  .role { display: none; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 50px; align-items: center; }
   .role.active { display: grid; animation: fade .45s ease; }
   @keyframes fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
   .role h3 { font-size: 30px; font-weight: 700; margin-bottom: 10px; }
@@ -125,6 +125,37 @@
   .shots img { width: 33%; max-width: 230px; cursor: zoom-in; transition: transform .3s; filter: drop-shadow(0 16px 24px rgba(15,26,58,.16)); }
   .shots img:hover { transform: translateY(-8px) scale(1.02); }
   @media (max-width: 900px) { .role.active { grid-template-columns: 1fr; } .role h3 { text-align: center; } .role > div > p { text-align: center; } }
+
+  /* ---------- AI ---------- */
+  .ai { background: linear-gradient(180deg, var(--bg), #EEF3FF); }
+  .ai-block { background: #fff; border: 1px solid var(--line); border-radius: 28px; padding: 44px; box-shadow: 0 10px 40px rgba(30,63,168,.06); }
+  .ai-block + .ai-block { margin-top: 28px; }
+  .ai-title { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+  .ai-title .ic { margin: 0; }
+  .ai-title h3 { font-size: 26px; font-weight: 700; }
+  .ai-block > p { color: var(--muted); margin-bottom: 32px; max-width: 760px; }
+  .steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+  .steps img, .reports img { width: 100%; }
+  .steps figure { text-align: center; position: relative; }
+  .steps .num { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); z-index: 2; width: 34px; height: 34px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 700; display: grid; place-items: center; box-shadow: 0 6px 16px rgba(64,123,255,.4); }
+  .steps img, .reports img, .assistant img { cursor: zoom-in; transition: transform .3s; }
+  .steps img { filter: drop-shadow(0 12px 18px rgba(15,26,58,.15)); }
+  .steps img:hover, .reports img:hover, .assistant img:hover { transform: translateY(-6px); }
+  .steps figcaption { font-size: 14px; font-weight: 600; margin-top: 4px; }
+  .steps figcaption span { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+  .reports { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; margin-top: 36px; padding-top: 36px; border-top: 1px dashed var(--line); }
+  .reports figure { text-align: center; }
+  .reports figcaption { font-size: 14px; color: var(--muted); font-weight: 500; }
+  .assistant { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+  .assistant img { max-width: 300px; margin-inline: auto; filter: drop-shadow(0 16px 24px rgba(15,26,58,.16)); }
+  .bubbles { display: grid; gap: 10px; margin-top: 18px; }
+  .bubbles span { display: inline-flex; align-items: center; gap: 10px; background: #F1F5FF; border-radius: 12px; padding: 10px 14px; font-size: 14.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .ai-block { padding: 28px 18px; }
+    .steps { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 46%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px 2px 16px; }
+    .steps figure { scroll-snap-align: center; }
+    .reports, .assistant { grid-template-columns: minmax(0, 1fr); }
+  }
 
   /* ---------- Gallery ---------- */
   .gallery-wrap { position: relative; }
@@ -194,6 +225,7 @@
     <div class="links">
       <a href="#features">Features</a>
       <a href="#roles">Roles</a>
+      <a href="#ai">AI</a>
       <a href="#screens">Screens</a>
       <a href="#security">Security</a>
       <a href="#developer">Developer</a>
@@ -278,8 +310,8 @@
         </ul>
       </div>
       <div class="shots">
-        <img src="screenshots/05-patient-signup.png" alt="Patient sign-up">
         <img src="screenshots/12-health-notes.png" alt="Health notes">
+        <img src="screenshots/20-ai-assistant.png" alt="Doctor AI assistant">
         <img src="screenshots/11-chat-health-note.png" alt="Health note shared in chat">
       </div>
     </div>
@@ -315,9 +347,9 @@
         </ul>
       </div>
       <div class="shots">
-        <img src="screenshots/06-staff-signup.png" alt="Staff sign-up">
         <img src="screenshots/14-staff-tasks.png" alt="Staff task inbox">
-        <img src="screenshots/15-voice-note.png" alt="Voice notes">
+        <img src="screenshots/24-mri-analyzing.png" alt="AI MRI analysis">
+        <img src="screenshots/25-mri-result.png" alt="MRI diagnosis result">
       </div>
     </div>
 
@@ -336,6 +368,48 @@
         <img src="screenshots/17-admin-home.png" alt="Admin dashboard">
         <img src="screenshots/18-new-admin.png" alt="Create a new admin">
         <img src="screenshots/19-admin-directory.png" alt="Team directory">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ai" id="ai">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="tag">AI inside</span>
+      <h2>AI that supports the care team</h2>
+      <p>Two AI services built into the app: one reads brain MRI scans, the other answers health questions.</p>
+    </div>
+
+    <div class="ai-block reveal">
+      <div class="ai-title"><div class="ic" style="background:#F2E9FF">🧠</div><h3>Brain tumour detection</h3></div>
+      <p>Lab staff upload a brain MRI and, in a few seconds, get a diagnosis with a confidence score: glioma, meningioma, pituitary tumour or no tumour. A deep-learning model (MobileNetV3 with attention) does the analysis, and a Grad-CAM heatmap shows where it looked.</p>
+      <div class="steps">
+        <figure><span class="num">1</span><img src="screenshots/21-mri-upload.png" alt="Upload an MRI scan" loading="lazy"><figcaption>Upload<span>Pick a brain MRI</span></figcaption></figure>
+        <figure><span class="num">2</span><img src="screenshots/22-mri-crop.png" alt="Crop the scan" loading="lazy"><figcaption>Crop<span>Focus on the brain</span></figcaption></figure>
+        <figure><span class="num">3</span><img src="screenshots/23-mri-patient.png" alt="Enter patient name" loading="lazy"><figcaption>Patient<span>Name for the report</span></figcaption></figure>
+        <figure><span class="num">4</span><img src="screenshots/24-mri-analyzing.png" alt="AI analysing the scan" loading="lazy"><figcaption>Analyse<span>Deep learning at work</span></figcaption></figure>
+        <figure><span class="num">5</span><img src="screenshots/25-mri-result.png" alt="Diagnosis result" loading="lazy"><figcaption>Result<span>Diagnosis + confidence</span></figcaption></figure>
+      </div>
+      <div class="reports">
+        <figure><img src="screenshots/26-mri-report-1.png" alt="PDF report page 1" loading="lazy"><figcaption>PDF report: diagnosis, risk factors, MRI and attention map</figcaption></figure>
+        <figure><img src="screenshots/27-mri-report-2.png" alt="PDF report page 2" loading="lazy"><figcaption>PDF report: AI confidence for each tumour type</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="ai-block reveal">
+      <div class="assistant">
+        <div>
+          <div class="ai-title"><div class="ic" style="background:#E3F6FB">🤖</div><h3>Doctor AI assistant</h3></div>
+          <p style="color:var(--muted)">Patients and staff can ask health questions any time and get clear answers, organised into sections so they're easy to follow. Answers come from large language models on Hugging Face (Mistral 7B, with fallbacks).</p>
+          <div class="bubbles">
+            <span>📖 Overview of the condition</span>
+            <span>📌 Key facts and recommendations</span>
+            <span>🩺 When to see a doctor</span>
+            <span>💊 Treatment options</span>
+          </div>
+        </div>
+        <img src="screenshots/20-ai-assistant.png" alt="Doctor AI chat" loading="lazy">
       </div>
     </div>
   </div>
@@ -368,6 +442,10 @@
       <figure><img src="screenshots/17-admin-home.png" alt="Admin dashboard" loading="lazy"><figcaption>Admin dashboard</figcaption></figure>
       <figure><img src="screenshots/18-new-admin.png" alt="Create admin" loading="lazy"><figcaption>Create a new admin</figcaption></figure>
       <figure><img src="screenshots/19-admin-directory.png" alt="Directory" loading="lazy"><figcaption>Team directory</figcaption></figure>
+      <figure><img src="screenshots/20-ai-assistant.png" alt="Doctor AI" loading="lazy"><figcaption>Doctor AI assistant</figcaption></figure>
+      <figure><img src="screenshots/21-mri-upload.png" alt="MRI upload" loading="lazy"><figcaption>MRI upload</figcaption></figure>
+      <figure><img src="screenshots/24-mri-analyzing.png" alt="MRI analysis" loading="lazy"><figcaption>MRI analysis</figcaption></figure>
+      <figure><img src="screenshots/25-mri-result.png" alt="MRI result" loading="lazy"><figcaption>MRI diagnosis</figcaption></figure>
     </div>
     <div class="arrows">
       <button class="arrow" id="prev" aria-label="Previous screens">←</button>
@@ -475,7 +553,7 @@
 
   // Lightbox
   const lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
-  document.querySelectorAll('.gallery img, .shots img').forEach(img => img.addEventListener('click', () => {
+  document.querySelectorAll('.gallery img, .shots img, .steps img, .reports img, .assistant img').forEach(img => img.addEventListener('click', () => {
     lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open');
   }));
   lb.addEventListener('click', () => lb.classList.remove('open'));

@@ -77,6 +77,30 @@ Designed and developed by **[Hassaan](https://github.com/hassaan2077)**
   </tr>
 </table>
 
+### 🧠 AI brain tumour detection
+
+Lab staff upload a brain MRI, crop it, enter the patient's name and get a diagnosis with a confidence score, plus a two-page PDF report with a Grad-CAM attention map.
+
+<table>
+  <tr>
+    <td align="center"><img src="screenshots/21-mri-upload.png" width="200"><br><sub><b>1. Upload an MRI scan</b></sub></td>
+    <td align="center"><img src="screenshots/22-mri-crop.png" width="200"><br><sub><b>2. Crop the scan</b></sub></td>
+    <td align="center"><img src="screenshots/23-mri-patient.png" width="200"><br><sub><b>3. Enter the patient's name</b></sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="screenshots/24-mri-analyzing.png" width="200"><br><sub><b>4. AI analyses the scan</b></sub></td>
+    <td align="center"><img src="screenshots/25-mri-result.png" width="200"><br><sub><b>5. Diagnosis and confidence</b></sub></td>
+    <td align="center"><img src="screenshots/20-ai-assistant.png" width="200"><br><sub><b>Doctor AI health assistant</b></sub></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><img src="screenshots/26-mri-report-1.png" width="380"><br><sub><b>PDF report: diagnosis, risk factors, MRI and attention map</b></sub></td>
+    <td align="center"><img src="screenshots/27-mri-report-2.png" width="380"><br><sub><b>PDF report: AI confidence for each tumour type</b></sub></td>
+  </tr>
+</table>
+
 ### Admin
 
 <table>
@@ -107,7 +131,7 @@ Designed and developed by **[Hassaan](https://github.com/hassaan2077)**
 ### 🏥 For hospital staff
 - **Task inbox** for the staff member's department or tasks assigned to them; the first to tap *Complete* claims the task
 - **10 staff roles** (nurses, medical officers, physiotherapists, lab staff and more) across **15 departments**
-- **AI brain MRI analysis** for lab staff: upload a scan and get a classification (glioma, meningioma, pituitary tumour or no tumour), a Grad-CAM heatmap of what the model looked at, and a PDF report
+- **AI brain MRI analysis** for lab staff: upload and crop a scan, and get a classification (glioma, meningioma, pituitary tumour or no tumour) with a confidence score, a Grad-CAM heatmap of what the model looked at, and a two-page PDF report
 
 ### 🛡️ For admins
 - **Team and patient directory** with search, filters and on-call status
