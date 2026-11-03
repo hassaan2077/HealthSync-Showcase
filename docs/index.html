@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HealthSync</title>
+  <meta name="description" content="HealthSync is an Android app that connects patients, doctors, hospital staff and admins, with messaging, video calls, clinical tasks, health notes and AI brain MRI analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F8F3F3;
+      --surface: #FFFFFF;
+      --text: #1A1A1A;
+      --muted: #5F6470;
+      --primary: #407BFF;
+      --primary-soft: #E6EEFF;
+      --border: #E7E1E1;
+      --shadow: 0 10px 30px rgba(64, 123, 255, 0.10);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0F1218;
+        --surface: #171B23;
+        --text: #EEF1F6;
+        --muted: #A3AAB8;
+        --primary: #6B98FF;
+        --primary-soft: #1D2740;
+        --border: #262C38;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0F1218;
+      --surface: #171B23;
+      --text: #EEF1F6;
+      --muted: #A3AAB8;
+      --primary: #6B98FF;
+      --primary-soft: #1D2740;
+      --border: #262C38;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--primary); }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+    header.hero { padding: 72px 0 48px; text-align: center; }
+    .logo { font-size: clamp(2.4rem, 7vw, 3.6rem); font-weight: 700; margin: 0; letter-spacing: -0.5px; }
+    .logo span { color: var(--primary); }
+    .tagline { font-size: clamp(1rem, 2.6vw, 1.25rem); color: var(--muted); margin: 8px auto 28px; max-width: 640px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .chip { background: var(--primary-soft); color: var(--primary); border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; font-weight: 500; }
+    .cta { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 12px 22px; border-radius: 12px; font-weight: 600; text-decoration: none; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--surface); }
+
+    section { padding: 48px 0; }
+    h2 { font-size: clamp(1.5rem, 4vw, 2rem); margin: 0 0 8px; }
+    .lead { color: var(--muted); margin: 0 0 28px; max-width: 720px; }
+
+    .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .shot { margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+    .shot img { display: block; width: 100%; aspect-ratio: 9 / 19; object-fit: cover; background: var(--primary-soft); }
+    .shot .ph { display: none; aspect-ratio: 9 / 19; align-items: center; justify-content: center; color: var(--muted); font-size: 0.85rem; background: var(--primary-soft); text-align: center; padding: 12px; }
+    .shot.missing img { display: none; }
+    .shot.missing .ph { display: flex; }
+    .shot p { margin: 0; padding: 10px 12px; font-size: 0.9rem; font-weight: 500; }
+
+    .roles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 22px; box-shadow: var(--shadow); }
+    .card h3 { margin: 0 0 10px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+    .card h3 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--primary); flex: none; }
+    .card ul { margin: 0; padding-left: 18px; color: var(--muted); }
+    .card li { margin: 6px 0; }
+    .card li strong { color: var(--text); font-weight: 600; }
+
+    .ai { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+    .flow span { background: var(--primary-soft); color: var(--primary); padding: 4px 10px; border-radius: 8px; font-size: 0.82rem; font-weight: 500; }
+    .flow i { color: var(--muted); font-style: normal; }
+
+    .arch svg { width: 100%; height: auto; display: block; }
+    .arch .node { fill: var(--surface); stroke: var(--border); }
+    .arch .core { fill: var(--primary); }
+    .arch text { fill: var(--text); font-family: inherit; font-size: 14px; }
+    .arch .core-text { fill: #fff; font-weight: 600; }
+    .arch .sub { fill: var(--muted); font-size: 12px; }
+    .arch .edge { stroke: var(--primary); stroke-width: 2; fill: none; }
+
+    .stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .stack .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    footer { padding: 40px 0 56px; color: var(--muted); text-align: center; font-size: 0.95rem; }
+
+    @media (max-width: 860px) {
+      .shots { grid-template-columns: repeat(2, 1fr); }
+      .roles, .ai { grid-template-columns: 1fr; }
+      .stack { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <h1 class="logo">Health<span>Sync</span></h1>
+      <p class="tagline">Your trusted health companion: one Android app that connects patients, doctors, hospital staff and admins.</p>
+      <div class="chips">
+        <span class="chip">React Native</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">Video calls</span>
+        <span class="chip">PyTorch</span>
+        <span class="chip">LLM chatbot</span>
+      </div>
+      <div class="cta">
+        <a class="btn btn-primary" href="#demo">See it in action</a>
+        <a class="btn btn-ghost" href="#features">Explore features</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="demo">
+      <div class="wrap">
+        <h2>A look inside</h2>
+        <p class="lead">Every role gets its own dashboard, built around what they do all day.</p>
+        <div class="shots">
+          <figure class="shot"><img src="media/welcome.png" alt="Welcome screen"><div class="ph">Welcome screen</div><p>Welcome</p></figure>
+          <figure class="shot"><img src="media/chat.png" alt="Doctor–patient chat"><div class="ph">Chat screenshot</div><p>Secure messaging</p></figure>
+          <figure class="shot"><img src="media/doctor-tasks.png" alt="Clinical tasks"><div class="ph">Clinical tasks</div><p>Clinical tasks</p></figure>
+          <figure class="shot"><img src="media/mri-analysis.png" alt="MRI analysis with heatmap"><div class="ph">MRI analysis</div><p>AI MRI analysis</p></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <h2>Built for every role in the hospital</h2>
+        <p class="lead">Role-based dashboards for patients, doctors, ten hospital staff roles and admins, all in one app.</p>
+        <div class="roles">
+          <div class="card">
+            <h3><span class="dot"></span>Patients</h3>
+            <ul>
+              <li><strong>Health notes</strong>: a personal journal; share a note with a doctor and get comments back.</li>
+              <li><strong>Messaging</strong> with read receipts, voice notes and PDF attachments.</li>
+              <li><strong>Video consultations</strong> with full incoming-call screens.</li>
+              <li><strong>Doctor AI</strong>: structured answers to medical questions.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><span class="dot"></span>Doctors</h3>
+            <ul>
+              <li><strong>Clinical tasks</strong> routed to one of 15 departments or to named staff.</li>
+              <li><strong>Live tracking</strong>: get notified the moment a task is completed.</li>
+              <li><strong>Shared notes</strong>: review what patients share and reply in context.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><span class="dot"></span>Hospital staff</h3>
+            <ul>
+              <li><strong>Task inbox</strong> for your department and personal assignments.</li>
+              <li><strong>One-tap completion</strong> that notifies the requesting doctor.</li>
+              <li><strong>AI MRI analysis</strong> for lab staff, with a downloadable PDF report.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><span class="dot"></span>Admins</h3>
+            <ul>
+              <li><strong>User directory</strong> with active and deactivated accounts.</li>
+              <li><strong>On-call management</strong> for staff.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai">
+      <div class="wrap">
+        <h2>AI where it helps</h2>
+        <p class="lead">Two Python services sit alongside the app.</p>
+        <div class="ai">
+          <div class="card">
+            <h3><span class="dot"></span>Brain MRI analysis</h3>
+            <ul>
+              <li>MobileNetV3-Large with a convolutional attention layer, fine-tuned on four classes: glioma, meningioma, pituitary tumour, no tumour.</li>
+              <li>Grad-CAM heatmaps show where the model looked.</li>
+              <li>Generates a PDF report with probabilities, images and risk factors.</li>
+            </ul>
+            <div class="flow"><span>Upload scan</span><i>→</i><span>MRI check</span><i>→</i><span>Classify</span><i>→</i><span>Grad-CAM</span><i>→</i><span>PDF report</span></div>
+          </div>
+          <div class="card">
+            <h3><span class="dot"></span>Medical chatbot</h3>
+            <ul>
+              <li>Instruction-tuned LLM (Mistral 7B) with automatic fallback models.</li>
+              <li>Answers are reshaped into consistent sections: overview, key facts, when to see a doctor, treatment.</li>
+              <li>Every answer carries a medical disclaimer.</li>
+            </ul>
+            <div class="flow"><span>Question</span><i>→</i><span>LLM</span><i>→</i><span>Format</span><i>→</i><span>Answer</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture" class="arch">
+      <div class="wrap">
+        <h2>Architecture</h2>
+        <p class="lead">An Android app on Firebase, with managed video calling and two AI microservices.</p>
+        <div class="card">
+          <svg viewBox="0 0 800 310" role="img" aria-label="Architecture: the React Native app talks to Firebase, Cloud Messaging, ZEGOCLOUD, the MRI service and the chatbot service, which calls Hugging Face.">
+            <path class="edge" d="M250 150 C 320 150, 330 40, 420 40"/>
+            <path class="edge" d="M250 150 C 330 150, 340 100, 420 100"/>
+            <path class="edge" d="M250 150 L 420 160"/>
+            <path class="edge" d="M250 150 C 330 150, 340 220, 420 220"/>
+            <path class="edge" d="M250 150 C 320 150, 330 280, 420 280"/>
+            <path class="edge" d="M620 280 L 650 280"/>
+            <rect class="core" x="40" y="110" width="210" height="80" rx="16"/>
+            <text class="core-text" x="145" y="146" text-anchor="middle">React Native app</text>
+            <text class="core-text" x="145" y="168" text-anchor="middle" style="font-weight:400;font-size:12px">Android</text>
+            <rect class="node" x="420" y="18" width="200" height="44" rx="12"/>
+            <text x="520" y="45" text-anchor="middle">Firebase Auth + DB</text>
+            <rect class="node" x="420" y="78" width="200" height="44" rx="12"/>
+            <text x="520" y="105" text-anchor="middle">Cloud Messaging</text>
+            <rect class="node" x="420" y="138" width="200" height="44" rx="12"/>
+            <text x="520" y="165" text-anchor="middle">ZEGOCLOUD calls</text>
+            <rect class="node" x="420" y="198" width="200" height="44" rx="12"/>
+            <text x="520" y="219" text-anchor="middle">MRI service</text>
+            <text class="sub" x="520" y="235" text-anchor="middle">Flask · PyTorch</text>
+            <rect class="node" x="420" y="258" width="200" height="40" rx="12"/>
+            <text x="520" y="283" text-anchor="middle">Chatbot service</text>
+            <rect class="node" x="650" y="258" width="140" height="40" rx="12"/>
+            <text x="720" y="283" text-anchor="middle">Hugging Face</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="wrap">
+        <h2>Tech stack</h2>
+        <div class="stack">
+          <div class="card"><h3><span class="dot"></span>Mobile</h3><p>React Native 0.76, React Navigation 7, Reanimated, Lottie, Notifee</p></div>
+          <div class="card"><h3><span class="dot"></span>Cloud</h3><p>Firebase Auth, Realtime Database, Cloud Messaging, ZEGOCLOUD</p></div>
+          <div class="card"><h3><span class="dot"></span>AI and services</h3><p>Python, Flask, PyTorch, torchvision, OpenCV, Hugging Face, fpdf2</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Built by <strong>Hassaan</strong> · <a href="https://github.com/hassaan2077">GitHub</a></p>
+      <p>The source code is private. Get in touch for a walkthrough.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Show a labelled placeholder until real screenshots are added.
+    document.querySelectorAll('.shot img').forEach(function (img) {
+      function markMissing() { img.closest('.shot').classList.add('missing'); }
+      img.addEventListener('error', markMissing);
+      if (img.complete && img.naturalWidth === 0) markMissing();
+    });
+  </script>
+</body>
+</html>
