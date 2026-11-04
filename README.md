@@ -24,10 +24,11 @@ Designed and developed by **[Hassaan](https://github.com/hassaan2077)**
 
 ## From FYP to Product
 
-HealthSync began as my Final Year Project, where it got first position among
-the Final Year Projects. I was then hired as a full-time remote AI Application
-Developer to continue its development, turning it into a production-focused
-healthcare app built for real-world use in hospitals.
+HealthSync started as my Final Year Project and got first position among the FYPs.
+After that I was hired full-time (remote) as an AI Application Developer to keep
+working on it. Since then it has grown from a simple student project into a much
+bigger app that is meant to be used in real hospitals. The table below shows what
+it had back then and what it has now.
 
 | Area | Original version (FYP) | Current version |
 |---|---|---|
@@ -53,7 +54,7 @@ healthcare app built for real-world use in hospitals.
 - **Patient health notes** that patients share with a doctor, who replies with comments
 - **AI brain MRI analysis:** tumour classification, a Grad-CAM heatmap and a PDF report
 - **AI health assistant** that answers medical questions in a clear, structured way
-- **Secure by design:** per-user database rules, no secret keys inside the app, admin-only admin creation
+- **Security:** per-user database rules, no secret keys inside the app, and only an admin can create another admin
 
 ---
 
@@ -165,13 +166,13 @@ Lab staff upload a brain MRI, crop it, enter the patient's name and get a diagno
 - Fingerprint login backed by the device keystore
 - Email verification before first login
 - Account deactivation, reactivation and deletion
-- Clean, consistent design with the Poppins typeface and a layout that scales to every screen size
+- Same look across all screens (Poppins font), and the layout adjusts to different phone sizes
 
 ---
 
 ## Security and privacy
 
-Health data needs care, so HealthSync was built and reviewed with security in mind:
+Since the app handles health data, security got a lot of attention:
 
 | Area | How it's handled |
 |---|---|

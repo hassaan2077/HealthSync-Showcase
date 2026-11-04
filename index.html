@@ -120,7 +120,7 @@
   .role > div > p { color: var(--muted); margin-bottom: 22px; }
   .checks { list-style: none; display: grid; gap: 14px; }
   .checks li { display: flex; gap: 12px; font-size: 15.5px; }
-  .checks li::before { content: "✓"; flex: none; width: 26px; height: 26px; border-radius: 8px; background: #E8EFFF; color: var(--blue); font-weight: 700; display: grid; place-items: center; font-size: 14px; margin-top: 1px; }
+  .checks li::before { content: "•"; flex: none; width: 26px; height: 26px; border-radius: 8px; background: #E8EFFF; color: var(--blue); font-weight: 700; display: grid; place-items: center; font-size: 14px; margin-top: 1px; }
   .shots { display: flex; gap: 16px; justify-content: center; }
   .shots img { width: 33%; max-width: 230px; cursor: zoom-in; transition: transform .3s; filter: drop-shadow(0 16px 24px rgba(15,26,58,.16)); }
   .shots img:hover { transform: translateY(-8px) scale(1.02); }
@@ -269,8 +269,8 @@
   <div class="wrap">
     <div class="head reveal">
       <span class="tag">Features</span>
-      <h2>Everything a hospital team needs, in one app</h2>
-      <p>Built for real hospital workflows, from a patient's first symptom note to the lab result.</p>
+      <h2>What the app does</h2>
+      <p>These are the main parts of HealthSync.</p>
     </div>
     <div class="grid3">
       <div class="card reveal"><h3>Chat &amp; video calls</h3><p>Real-time messaging with voice notes, files, read receipts and one-tap video calls that ring even when the app is closed.</p></div>
@@ -288,7 +288,7 @@
     <div class="head reveal">
       <span class="tag">Built for every role</span>
       <h2>Four dashboards, one app</h2>
-      <p>Each person sees exactly what they need. Pick a role to explore.</p>
+      <p>Every role gets its own screens. Pick a role to see what it can do.</p>
     </div>
     <div class="tabs" role="tablist">
       <button class="tab active" data-role="patient">Patient</button>
@@ -319,7 +319,7 @@
     <div class="role" id="role-doctor">
       <div>
         <h3>For doctors</h3>
-        <p>Coordinate care with patients and the hospital team.</p>
+        <p>Work with patients and the hospital team.</p>
         <ul class="checks">
           <li>Create tasks for a patient with priority and notes</li>
           <li>Route tasks to any of 15 departments or to named staff</li>
@@ -356,7 +356,7 @@
     <div class="role" id="role-admin">
       <div>
         <h3>For admins</h3>
-        <p>Oversee the whole team, safely.</p>
+        <p>Manage the hospital team.</p>
         <ul class="checks">
           <li>Directory of every doctor, staff member and patient</li>
           <li>Search, filter by role and manage on-call status</li>
@@ -377,7 +377,7 @@
   <div class="wrap">
     <div class="head reveal">
       <span class="tag">AI inside</span>
-      <h2>AI that supports the care team</h2>
+      <h2>AI features</h2>
       <p>Two AI services built into the app: one reads brain MRI scans, the other answers health questions.</p>
     </div>
 
@@ -458,8 +458,8 @@
   <div class="wrap">
     <div class="head reveal">
       <span class="tag">Security &amp; privacy</span>
-      <h2>Health data, handled with care</h2>
-      <p>Security was designed in from the start and reviewed throughout development.</p>
+      <h2>Security</h2>
+      <p>Since the app handles health data, I paid a lot of attention to security.</p>
     </div>
     <div class="sec">
       <div class="reveal"><b>Private by rule</b><p>Database rules let each person read only their own chats and health notes. Tasks are visible only to hospital staff.</p></div>
