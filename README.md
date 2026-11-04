@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="banner.png" alt="HealthSync: one app for patients, doctors and hospital staff" width="100%">
+<img src="banner-v2.png" alt="HealthSync: one app for patients, doctors and hospital staff" width="100%">
 
 # HealthSync
 
@@ -14,7 +14,7 @@ Designed and developed by **[Hassaan](https://github.com/hassaan2077)**
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
 
-### 🌐 [Visit the website →](https://hassaan2077.github.io/HealthSync-Showcase/)
+### [Visit the website →](https://hassaan2077.github.io/HealthSync-Showcase/)
 
 [From FYP to product](#from-fyp-to-product) · [Highlights](#highlights) · [Screenshots](#screenshots) · [Features](#features) · [Security](#security-and-privacy) · [Architecture](#architecture) · [Tech stack](#tech-stack)
 
@@ -47,13 +47,13 @@ healthcare app built for real-world use in hospitals.
 
 ## Highlights
 
-- 👥 **Four roles, four dashboards:** Patient, Doctor, Hospital Staff (10 staff roles) and Admin
-- 💬 **Real-time chat and video calls**, with voice notes, files, read receipts and push notifications
-- 📋 **Clinical task routing:** doctors send tasks to any of 15 hospital departments or to named staff; the first person to complete a task claims it
-- 📝 **Patient health notes** that patients share with a doctor, who replies with comments
-- 🧠 **AI brain MRI analysis:** tumour classification, a Grad-CAM heatmap and a PDF report
-- 🤖 **AI health assistant** that answers medical questions in a clear, structured way
-- 🔐 **Secure by design:** per-user database rules, no secret keys inside the app, admin-only admin creation
+- **Four roles, four dashboards:** Patient, Doctor, Hospital Staff (10 staff roles) and Admin
+- **Real-time chat and video calls**, with voice notes, files, read receipts and push notifications
+- **Clinical task management:** doctors send tasks to any of 15 hospital departments or to named staff; the first person to complete a task claims it
+- **Patient health notes** that patients share with a doctor, who replies with comments
+- **AI brain MRI analysis:** tumour classification, a Grad-CAM heatmap and a PDF report
+- **AI health assistant** that answers medical questions in a clear, structured way
+- **Secure by design:** per-user database rules, no secret keys inside the app, admin-only admin creation
 
 ---
 
@@ -100,7 +100,7 @@ healthcare app built for real-world use in hospitals.
   </tr>
 </table>
 
-### 🧠 AI brain tumour detection
+### AI brain tumour detection
 
 Lab staff upload a brain MRI, crop it, enter the patient's name and get a diagnosis with a confidence score, plus a two-page PDF report with a Grad-CAM attention map.
 
@@ -138,29 +138,29 @@ Lab staff upload a brain MRI, crop it, enter the patient's name and get a diagno
 
 ## Features
 
-### 🧑 For patients
+### For patients
 - **Health notes:** a personal health journal, searchable by day or date
 - **Share with a doctor:** send one note to a chosen doctor, who can reply with comments that appear on the note and in the chat
 - **Chat and video calls** with doctors and staff
 - **AI health assistant:** ask medical questions and get structured answers (overview, key facts, when to see a doctor, treatment options)
 - **Sign up with email or phone number** (OTP), and reset a forgotten password by OTP
 
-### 🩺 For doctors
+### For doctors
 - **Clinical tasks:** create tasks for a patient with priority and notes, and route them to a department or to specific staff members
 - **Live tracking** of incomplete and completed tasks, with in-app and push notifications when staff complete them
 - **Review shared health notes** and reply in context
 - **Messaging and video calls** with patients and colleagues
 
-### 🏥 For hospital staff
+### For hospital staff
 - **Task inbox** for the staff member's department or tasks assigned to them; the first to tap *Complete* claims the task
 - **10 staff roles** (nurses, medical officers, physiotherapists, lab staff and more) across **15 departments**
 - **AI brain MRI analysis** for lab staff: upload and crop a scan, and get a classification (glioma, meningioma, pituitary tumour or no tumour) with a confidence score, a Grad-CAM heatmap of what the model looked at, and a two-page PDF report
 
-### 🛡️ For admins
+### For admins
 - **Team and patient directory** with search, filters and on-call status
 - **Create new admins** from inside the app; nobody can sign up as an admin
 
-### ✨ Across the app
+### Across the app
 - Push notifications that arrive whether the app is open, in the background or closed, and open the right screen when tapped
 - Fingerprint login backed by the device keystore
 - Email verification before first login
@@ -187,14 +187,14 @@ Health data needs care, so HealthSync was built and reviewed with security in mi
 
 ```mermaid
 flowchart LR
-    App["📱 HealthSync app<br/>React Native · Android"]
-    App -- "Login, chat, notes, tasks" --> Firebase[("🔥 Firebase<br/>Auth + Realtime Database")]
-    App -- "Send notification" --> Worker["☁️ Push service<br/>Cloudflare Worker"]
+    App["HealthSync app<br/>React Native · Android"]
+    App -- "Login, chat, notes, tasks" --> Firebase[("Firebase<br/>Auth + Realtime Database")]
+    App -- "Send notification" --> Worker["Push service<br/>Cloudflare Worker"]
     Worker -- "Verify sender, find device" --> Firebase
-    Worker -- "Deliver" --> FCM["🔔 Firebase Cloud Messaging"]
-    App -- "Video calls" --> Zego["🎥 ZEGOCLOUD"]
-    App -- "MRI scan" --> MRI["🧠 MRI service<br/>Flask + PyTorch"]
-    App -- "Medical question" --> Bot["🤖 Assistant service<br/>Flask"]
+    Worker -- "Deliver" --> FCM["Firebase Cloud Messaging"]
+    App -- "Video calls" --> Zego["ZEGOCLOUD"]
+    App -- "MRI scan" --> MRI["MRI service<br/>Flask + PyTorch"]
+    App -- "Medical question" --> Bot["Assistant service<br/>Flask"]
     Bot --> HF["Hugging Face models"]
 ```
 
@@ -220,7 +220,7 @@ This repository is a **public showcase** of HealthSync. The source code is kept 
 
 <div align="center">
 
-### 👨‍💻 Developed by Hassaan
+### Developed by Hassaan
 
 [![GitHub](https://img.shields.io/badge/GitHub-hassaan2077-181717?style=for-the-badge&logo=github)](https://github.com/hassaan2077)
 

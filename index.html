@@ -7,8 +7,8 @@
 <meta name="description" content="HealthSync is a hospital communication app for Android that connects patients, doctors, hospital staff and admins. Designed and developed by Hassaan.">
 <meta name="author" content="Hassaan">
 <meta property="og:title" content="HealthSync · by Hassaan">
-<meta property="og:description" content="One app for patients, doctors and hospital staff: secure chat and video calls, clinical task routing, AI MRI analysis and an AI health assistant.">
-<meta property="og:image" content="https://hassaan2077.github.io/HealthSync-Showcase/banner.png">
+<meta property="og:description" content="One app for patients, doctors and hospital staff: secure chat and video calls, clinical task management, AI MRI analysis and an AI health assistant.">
+<meta property="og:image" content="https://hassaan2077.github.io/HealthSync-Showcase/banner-v2.png">
 <meta property="og:url" content="https://hassaan2077.github.io/HealthSync-Showcase/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -273,12 +273,12 @@
       <p>Built for real hospital workflows, from a patient's first symptom note to the lab result.</p>
     </div>
     <div class="grid3">
-      <div class="card reveal"><div class="ic" style="background:#E8EFFF">💬</div><h3>Chat &amp; video calls</h3><p>Real-time messaging with voice notes, files, read receipts and one-tap video calls that ring even when the app is closed.</p></div>
-      <div class="card reveal"><div class="ic" style="background:#FFF1E2">📋</div><h3>Clinical task Management</h3><p>Doctors send tasks to a department or named staff. The first person to complete a task claims it, and the doctor is notified.</p></div>
-      <div class="card reveal"><div class="ic" style="background:#E5F8EF">📝</div><h3>Health notes</h3><p>Patients keep a health journal and share a single note with a doctor, who replies with comments right on the note.</p></div>
-      <div class="card reveal"><div class="ic" style="background:#F2E9FF">🧠</div><h3>AI brain MRI analysis</h3><p>Lab staff upload a scan and get a tumour classification, a Grad-CAM heatmap of what the model saw, and a PDF report.</p></div>
-      <div class="card reveal"><div class="ic" style="background:#E3F6FB">🤖</div><h3>AI health assistant</h3><p>Ask medical questions and get clear, structured answers: overview, key facts, when to see a doctor and treatment options.</p></div>
-      <div class="card reveal"><div class="ic" style="background:#FDE8EC">🔔</div><h3>Smart notifications</h3><p>Push notifications arrive whether the app is open, in the background or closed, and open the right screen when tapped.</p></div>
+      <div class="card reveal"><h3>Chat &amp; video calls</h3><p>Real-time messaging with voice notes, files, read receipts and one-tap video calls that ring even when the app is closed.</p></div>
+      <div class="card reveal"><h3>Clinical task management</h3><p>Doctors send tasks to a department or named staff. The first person to complete a task claims it, and the doctor is notified.</p></div>
+      <div class="card reveal"><h3>Health notes</h3><p>Patients keep a health journal and share a single note with a doctor, who replies with comments right on the note.</p></div>
+      <div class="card reveal"><h3>AI brain MRI analysis</h3><p>Lab staff upload a scan and get a tumour classification, a Grad-CAM heatmap of what the model saw, and a PDF report.</p></div>
+      <div class="card reveal"><h3>AI health assistant</h3><p>Ask medical questions and get clear, structured answers: overview, key facts, when to see a doctor and treatment options.</p></div>
+      <div class="card reveal"><h3>Smart notifications</h3><p>Push notifications arrive whether the app is open, in the background or closed, and open the right screen when tapped.</p></div>
     </div>
   </div>
 </section>
@@ -291,10 +291,10 @@
       <p>Each person sees exactly what they need. Pick a role to explore.</p>
     </div>
     <div class="tabs" role="tablist">
-      <button class="tab active" data-role="patient">🧑 Patient</button>
-      <button class="tab" data-role="doctor">🩺 Doctor</button>
-      <button class="tab" data-role="staff">🏥 Hospital Staff</button>
-      <button class="tab" data-role="admin">🛡️ Admin</button>
+      <button class="tab active" data-role="patient">Patient</button>
+      <button class="tab" data-role="doctor">Doctor</button>
+      <button class="tab" data-role="staff">Hospital Staff</button>
+      <button class="tab" data-role="admin">Admin</button>
     </div>
 
     <div class="role active" id="role-patient">
@@ -382,7 +382,7 @@
     </div>
 
     <div class="ai-block reveal">
-      <div class="ai-title"><div class="ic" style="background:#F2E9FF">🧠</div><h3>Brain tumour detection</h3></div>
+      <div class="ai-title"><h3>Brain tumour detection</h3></div>
       <p>Lab staff upload a brain MRI and, in a few seconds, get a diagnosis with a confidence score: glioma, meningioma, pituitary tumour or no tumour. A deep-learning model (MobileNetV3 with attention) does the analysis, and a Grad-CAM heatmap shows where it looked.</p>
       <div class="steps">
         <figure><span class="num">1</span><img src="screenshots/21-mri-upload.png" alt="Upload an MRI scan" loading="lazy"><figcaption>Upload<span>Pick a brain MRI</span></figcaption></figure>
@@ -400,13 +400,13 @@
     <div class="ai-block reveal">
       <div class="assistant">
         <div>
-          <div class="ai-title"><div class="ic" style="background:#E3F6FB">🤖</div><h3>Doctor AI assistant</h3></div>
+          <div class="ai-title"><h3>Doctor AI assistant</h3></div>
           <p style="color:var(--muted)">Patients and staff can ask health questions any time and get clear answers, organised into sections so they're easy to follow. Answers come from large language models on Hugging Face (Mistral 7B, with fallbacks).</p>
           <div class="bubbles">
-            <span>📖 Overview of the condition</span>
-            <span>📌 Key facts and recommendations</span>
-            <span>🩺 When to see a doctor</span>
-            <span>💊 Treatment options</span>
+            <span>Overview of the condition</span>
+            <span>Key facts and recommendations</span>
+            <span>When to see a doctor</span>
+            <span>Treatment options</span>
           </div>
         </div>
         <img src="screenshots/20-ai-assistant.png" alt="Doctor AI chat" loading="lazy">
@@ -462,11 +462,11 @@
       <p>Security was designed in from the start and reviewed throughout development.</p>
     </div>
     <div class="sec">
-      <div class="reveal"><span>🔒</span><b>Private by rule</b><p>Database rules let each person read only their own chats and health notes. Tasks are visible only to hospital staff.</p></div>
-      <div class="reveal"><span>🗝️</span><b>No keys in the app</b><p>Notifications go through a small serverless service that holds the secret key and checks the sender's login first.</p></div>
-      <div class="reveal"><span>🛡️</span><b>Protected roles</b><p>Nobody can make themselves an admin. Only an existing admin can create one, and the rules enforce it.</p></div>
-      <div class="reveal"><span>✉️</span><b>Verified accounts</b><p>Email accounts are verified before first login; phone accounts are verified by OTP.</p></div>
-      <div class="reveal"><span>👆</span><b>Secure on device</b><p>Sessions live in encrypted storage, and fingerprint login uses the Android keystore.</p></div>
+      <div class="reveal"><b>Private by rule</b><p>Database rules let each person read only their own chats and health notes. Tasks are visible only to hospital staff.</p></div>
+      <div class="reveal"><b>No keys in the app</b><p>Notifications go through a small serverless service that holds the secret key and checks the sender's login first.</p></div>
+      <div class="reveal"><b>Protected roles</b><p>Nobody can make themselves an admin. Only an existing admin can create one, and the rules enforce it.</p></div>
+      <div class="reveal"><b>Verified accounts</b><p>Email accounts are verified before first login; phone accounts are verified by OTP.</p></div>
+      <div class="reveal"><b>Secure on device</b><p>Sessions live in encrypted storage, and fingerprint login uses the Android keystore.</p></div>
     </div>
   </div>
 </section>
@@ -480,14 +480,14 @@
     </div>
     <div class="arch reveal">
       <div class="stack">
-        <div class="node"><div class="ic" style="background:#FFF6DB">🔥</div><div><b>Firebase</b><small>Auth, Realtime Database, Cloud Messaging</small></div></div>
-        <div class="node"><div class="ic" style="background:#FFEFE3">☁️</div><div><b>Push service</b><small>Cloudflare Worker</small></div></div>
-        <div class="node"><div class="ic" style="background:#E8EFFF">🎥</div><div><b>Video calls</b><small>ZEGOCLOUD</small></div></div>
+        <div class="node"><div><b>Firebase</b><small>Auth, Realtime Database, Cloud Messaging</small></div></div>
+        <div class="node"><div><b>Push service</b><small>Cloudflare Worker</small></div></div>
+        <div class="node"><div><b>Video calls</b><small>ZEGOCLOUD</small></div></div>
       </div>
       <div class="center"><div class="node"><img src="icon.png" alt="" style="width:64px;height:64px;border-radius:18px"><div><b style="font-size:20px">HealthSync app</b><small>React Native · Android</small></div></div></div>
       <div class="stack">
-        <div class="node"><div class="ic" style="background:#F2E9FF">🧠</div><div><b>MRI analysis service</b><small>Flask, PyTorch, Grad-CAM</small></div></div>
-        <div class="node"><div class="ic" style="background:#E3F6FB">🤖</div><div><b>AI assistant service</b><small>Flask, Hugging Face models</small></div></div>
+        <div class="node"><div><b>MRI analysis service</b><small>Flask, PyTorch, Grad-CAM</small></div></div>
+        <div class="node"><div><b>AI assistant service</b><small>Flask, Hugging Face models</small></div></div>
       </div>
     </div>
   </div>
@@ -500,18 +500,18 @@
       <h2>Built with</h2>
     </div>
     <div class="chips reveal">
-      <span class="chip">⚛️ React Native 0.76</span>
-      <span class="chip">🧭 React Navigation</span>
-      <span class="chip">🔥 Firebase Auth</span>
-      <span class="chip">🗄️ Realtime Database</span>
-      <span class="chip">🔔 Cloud Messaging</span>
-      <span class="chip">☁️ Cloudflare Workers</span>
-      <span class="chip">🎥 ZEGOCLOUD</span>
-      <span class="chip">🐍 Python &amp; Flask</span>
-      <span class="chip">🔦 PyTorch</span>
-      <span class="chip">🤗 Hugging Face</span>
-      <span class="chip">🎞️ Lottie &amp; Reanimated</span>
-      <span class="chip">👆 Android Keystore</span>
+      <span class="chip">React Native 0.76</span>
+      <span class="chip">React Navigation</span>
+      <span class="chip">Firebase Auth</span>
+      <span class="chip">Realtime Database</span>
+      <span class="chip">Cloud Messaging</span>
+      <span class="chip">Cloudflare Workers</span>
+      <span class="chip">ZEGOCLOUD</span>
+      <span class="chip">Python &amp; Flask</span>
+      <span class="chip">PyTorch</span>
+      <span class="chip">Hugging Face</span>
+      <span class="chip">Lottie &amp; Reanimated</span>
+      <span class="chip">Android Keystore</span>
     </div>
   </div>
 </section>
