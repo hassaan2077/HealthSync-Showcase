@@ -16,9 +16,32 @@ Designed and developed by **[Hassaan](https://github.com/hassaan2077)**
 
 ### 🌐 [Visit the website →](https://hassaan2077.github.io/HealthSync-Showcase/)
 
-[Highlights](#highlights) · [Screenshots](#screenshots) · [Features](#features) · [Security](#security-and-privacy) · [Architecture](#architecture) · [Tech stack](#tech-stack)
+[From FYP to product](#from-fyp-to-product) · [Highlights](#highlights) · [Screenshots](#screenshots) · [Features](#features) · [Security](#security-and-privacy) · [Architecture](#architecture) · [Tech stack](#tech-stack)
 
 </div>
+
+---
+
+## From FYP to Product
+
+HealthSync began as my Final Year Project, where it got first position among
+the Final Year Projects. I was then hired as a full-time remote AI Application
+Developer to continue its development, turning it into a production-focused
+healthcare app built for real-world use in hospitals.
+
+| Area | Original version (FYP) | Current version |
+|---|---|---|
+| Users & roles | Basic role-based access for doctors, patients and lab staff | Patients, doctors, admins and full hospital staff across departments |
+| Security | Minimal data protection | Firebase Security Rules: users only see their own data, verified accounts, no self-promotion to admin |
+| Login | Simple login/signup | Upgraded role-based signup and login, biometric (fingerprint) login, account deactivation and deletion |
+| Messaging | Doctor–patient text messaging and document sharing | Communication across all roles, with message deletion, voice messages, read receipts and attachments |
+| Calling | – | Video calling |
+| Clinical work | – | Clinical task management: doctors route tasks to hospital departments or specific staff |
+| Health notes | – | Patient health notes that can be shared with doctors for comments |
+| Notifications | – | Push notifications and in-app alerts for messages and tasks |
+| MRI analysis | Lab staff generate brain tumor reports | AI analysis with Grad-CAM heatmap and PDF reports, available to hospital staff |
+| AI chatbot | Medical chatbot | Structured medical answers with model fallbacks |
+| Admin | – | User directory with on-call status |
 
 ---
 
