@@ -79,6 +79,18 @@ it had back then and what it has now.
   </tr>
 </table>
 
+### Light and dark mode
+
+The app has Light, Dark and System themes. You can change it from Settings.
+
+<table>
+  <tr>
+    <td align="center"><img src="screenshots/28-theme-light.png" width="200"><br><sub><b>Light</b></sub></td>
+    <td align="center"><img src="screenshots/29-theme-dark.png" width="200"><br><sub><b>Dark</b></sub></td>
+    <td align="center"><img src="screenshots/30-theme-system.png" width="200"><br><sub><b>System (follows the phone)</b></sub></td>
+  </tr>
+</table>
+
 ### Doctors and clinical tasks
 
 <table>
